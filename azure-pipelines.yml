@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  name: sleave-pool
+  name: Sleave-server
 
 steps:
 - task: Maven@4
