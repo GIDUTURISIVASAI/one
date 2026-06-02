@@ -5,6 +5,25 @@ pool:
   name: siva-pool
 
 steps:
+- task: SonarQubePrepare@8
+  inputs:
+    SonarQube: 'sonarqube'
+    scannerMode: 'other'
+    extraProperties: |
+      # Additional properties that will be passed to the scanner, 
+      # Put one key=value per line, example:
+      # sonar.exclusions=**/*.bin
+      sonar.projectKey=my-project_my-project_AZ6I2aAYKldlh0iuE-S_
+- task: JavaToolInstaller@1
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
+- task: SonarQubePublish@8
+  inputs:
+    pollingTimeoutSec: '300'
+
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
@@ -14,7 +33,8 @@ steps:
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
-    sonarQubeRunAnalysis: false
+    sonarQubeRunAnalysis: true
+    sqMavenPluginVersionChoice: 'latest'
 - task: TomcatDeployment@1
   inputs:
     TomcatUrl: 'http://20.115.94.105:8080/'
