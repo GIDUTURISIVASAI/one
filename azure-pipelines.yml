@@ -16,7 +16,7 @@ steps:
       sonar.projectKey=my-project_my-project_AZ6I2aAYKldlh0iuE-S_
 - task: JavaToolInstaller@1
   inputs:
-    versionSpec: '11'
+    versionSpec: '17'
     jdkArchitectureOption: 'x64'
     jdkSourceOption: 'PreInstalled'
 
