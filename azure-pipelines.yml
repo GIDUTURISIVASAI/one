@@ -4,6 +4,7 @@ trigger:
 pool:
   name: siva-pool
 
+steps:
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
