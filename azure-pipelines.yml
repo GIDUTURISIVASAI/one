@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  name: siva-pool
+  name: sai-pool
 
   - task: Maven@4
     inputs:
